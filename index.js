@@ -1,43 +1,37 @@
-class Animal{
-    constructor(name, gender){
+class Animal {
+    constructor(name, gender, message) {
         this.name = name;
         this.gender = gender;
+        this.message = message;
     }
-    speak(message){
-        return message;
-    }
-}
-class Cat extends Animal{
-    constructor(name, gender){
-        super(name, gender);
-        this.message = `${name} says meow!`;
-    }
-    speak(){
-        return super.speak(this.message);
+    speak() {
+        return this.message;
     }
 }
-class Dog extends Animal{
-    constructor(name, gender){
-        super(name, gender);
-        this.message = `${name} says woof!`;
-    }
-    speak(){
-        return super.speak(this.message);
+class Cat extends Animal {
+    constructor(name, gender) {
+        super(name, gender, `${name} says meow!`);
     }
 }
-class Bird extends Animal{
-    constructor(name, gender){
-        super(name, gender);
-        if (this.gender === "male")
-        this.message = `It's me! ${this.name}, the parrot!`;
-        else
-        this.message = `${this.name} says squawk!`;
+
+class Dog extends Animal {
+    constructor(name, gender) {
+        super(name, gender, `${name} says woof!`);
     }
-    speak(){
-        return super.speak(this.message);
+}
+class Bird extends Animal {
+    constructor(name, gender) {
+        let message;
+        if (gender === "male"){
+            message = `It's me! ${name}, the parrot!`;
+        }
+        else{
+            message = `${name} says squawk!`
+        }
+        super(name, gender, message);
     }
 }
 const cat = new Cat("Sasha", "female")
 const dog = new Dog("Rufio", "male")
-const bird2 = new Bird("Mable", "female")
 const bird = new Bird("Pablo", "male")
+const bird2 = new Bird("Mable", "female")
